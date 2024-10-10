@@ -1,0 +1,132 @@
+:root {
+    --text: #060a05;
+    --background: #fbfefb;
+    --primary: #4dcd3c;
+    --secondary: #96f08a;
+    --accent: #4efb37;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: var(--secondary);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#product-form {
+    background-color: var(--primary);
+    padding: 20px;
+    border-radius: 10px;
+    width: 320px;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: var(--background);
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    color: var(--text);
+    background-color: #fff;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: var(--secondary);
+}
+
+#product-list {
+    margin-top: 40px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: var(--secondary);
+    padding: 10px 20px;
+    margin: 10px auto;
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 1.1em;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul li:nth-child(even) {
+    background-color: var(--accent);
+}
+
+ul li button {
+    background-color: #f44336;
+    color: #fff;
+    padding: 8px 15px;
+    width: 20%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+ul li button:hover {
+    background-color: #d32f2f;
+}
+
