@@ -1,4 +1,3 @@
-// Manejador del DOM
 import GestorAlumnos from "./Clases/Gestor.js";
 
 const gestor = new GestorAlumnos();
@@ -18,13 +17,15 @@ document.getElementById('addStudentBtn').addEventListener('click', () => {
     }
 });
 
-function actualizarListas(alumnos, elementoId) {
+function actualizarListas(listaAlumnos, elementoId) {
     const lista = document.getElementById(elementoId);
     lista.innerHTML = ''; // Limpiar la lista anterior
 
-    alumnos.forEach(alumno => {
+    let actual = listaAlumnos.cabeza; // Comenzar desde el primer nodo
+    while (actual) {
         const li = document.createElement('li');
-        li.textContent = `${alumno.nombre} - Calificación: ${alumno.calificacion}`;
+        li.textContent = `${actual.alumno.nombre} - Calificación: ${actual.alumno.calificacion}`; // Ajustar para usar las propiedades
         lista.appendChild(li);
-    });
+        actual = actual.siguiente; // Mover al siguiente nodo
+    }
 }

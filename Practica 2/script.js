@@ -1,4 +1,3 @@
-// Manejador del DOM
 import Numeros from "./Clases/Numeros.js";
 
 document.getElementById("generateBtn").addEventListener("click", () => {
@@ -9,7 +8,6 @@ document.getElementById("generateBtn").addEventListener("click", () => {
     listaNumeros.generarNumerosAleatorios();
     listaNumeros.clasificarNumeros();
 
-    // Actualizar listas en el DOM
     actualizarListas(listaNumeros.obtenerPares(), "evenNumbers");
     actualizarListas(listaNumeros.obtenerImpares(), "oddNumbers");
   } else {
@@ -17,13 +15,15 @@ document.getElementById("generateBtn").addEventListener("click", () => {
   }
 });
 
-function actualizarListas(numeros, elementoId) {
+function actualizarListas(listaNumeros, elementoId) {
   const lista = document.getElementById(elementoId);
-  lista.innerHTML = ""; // Limpiar la lista anterior
+  lista.innerHTML = ""; 
 
-  numeros.forEach((numero) => {
+  let actual = listaNumeros.cabeza; 
+  while (actual) {
     const li = document.createElement("li");
-    li.textContent = numero;
+    li.textContent = actual.dato; 
     lista.appendChild(li);
-  });
+    actual = actual.siguiente;
+  }
 }

@@ -1,32 +1,62 @@
 import ListaSimpleEnlazada from "./Lista.js";
 import Producto from "./Producto.js";
+import Nodo from "./Nodo.js";
 
 class GestorProductos {
     constructor() {
         this.productos = new ListaSimpleEnlazada();
     }
 
-    // Método para agregar producto
     agregarProducto(nombre, precio) {
         const nuevoProducto = new Producto(nombre, precio);
         this.productos.agregar(nuevoProducto);
     }
 
-    // Método para eliminar producto por nombre
     eliminarProducto(nombre) {
         this.productos.eliminar(nombre);
     }
 
-    // Obtener productos ordenados por nombre
     obtenerProductosOrdenados() {
-        const productos = this.productos.obtenerProductos();
-        return productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        const listaOrdenada = new ListaSimpleEnlazada();
+        let actual = this.productos.cabeza;
+        
+        // Extraer todos los productos y ordenarlos
+        while (actual) {
+            listaOrdenada.agregar(actual.producto); // Añadir a una nueva lista
+            actual = actual.siguiente;
+        }
+
+        // Ordenar la lista enlazada (insertion sort)
+        let ordenado = new ListaSimpleEnlazada();
+        actual = listaOrdenada.cabeza;
+
+        while (actual) {
+            let actualOrdenado = ordenado.cabeza;
+            const nuevoNodo = new Nodo(actual.producto);
+            if (!actualOrdenado || actualOrdenado.producto.nombre > nuevoNodo.producto.nombre) {
+                nuevoNodo.siguiente = ordenado.cabeza;
+                ordenado.cabeza = nuevoNodo;
+            } else {
+                while (actualOrdenado.siguiente && actualOrdenado.siguiente.producto.nombre < nuevoNodo.producto.nombre) {
+                    actualOrdenado = actualOrdenado.siguiente;
+                }
+                nuevoNodo.siguiente = actualOrdenado.siguiente;
+                actualOrdenado.siguiente = nuevoNodo;
+            }
+            actual = actual.siguiente;
+        }
+        
+        return ordenado; // Retornar la lista ordenada
     }
 
-    // Calcular el costo total de los productos
     calcularCostoTotal() {
-        const productos = this.productos.obtenerProductos();
-        return productos.reduce((total, producto) => total + producto.precio, 0);
+        let total = 0;
+        let actual = this.productos.cabeza;
+        while (actual) {
+            total += actual.producto.precio; // Sumar el precio
+            actual = actual.siguiente;
+        }
+        return total; // Retornar el costo total
     }
 }
 

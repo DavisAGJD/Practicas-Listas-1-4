@@ -1,32 +1,38 @@
-// Clase principal que gestiona a los alumnos y las listas
 import ListaSimpleEnlazada from "./Lista.js";
-import Alumno from "./Alumno.js";
 
 class GestorAlumnos {
-  constructor() {
-    this.alumnosAprobados = new ListaSimpleEnlazada();
-    this.alumnosReprobados = new ListaSimpleEnlazada();
-  }
-
-  // Método para agregar alumno y clasificar si aprobó o reprobó
-  agregarAlumno(nombre, calificacion) {
-    const nuevoAlumno = new Alumno(nombre, calificacion);
-    if (calificacion >= 7) {
-      this.alumnosAprobados.agregar(nuevoAlumno);
-    } else {
-      this.alumnosReprobados.agregar(nuevoAlumno);
+    constructor() {
+        this.alumnos = new ListaSimpleEnlazada(); 
     }
-  }
 
-  // Obtener aprobados
-  obtenerAprobados() {
-    return this.alumnosAprobados.obtenerAlumnos();
-  }
+    agregarAlumno(nombre, calificacion) {
+        const alumno = { nombre, calificacion }; 
+        this.alumnos.agregar(alumno); 
+    }
 
-  // Obtener reprobados
-  obtenerReprobados() {
-    return this.alumnosReprobados.obtenerAlumnos();
-  }
+    obtenerAprobados() {
+        const aprobados = new ListaSimpleEnlazada();
+        let actual = this.alumnos.cabeza;
+        while (actual) {
+            if (actual.alumno.calificacion >= 7) { 
+                aprobados.agregar(actual.alumno); 
+            }
+            actual = actual.siguiente;
+        }
+        return aprobados; 
+    }
+
+    obtenerReprobados() {
+        const reprobados = new ListaSimpleEnlazada();
+        let actual = this.alumnos.cabeza;
+        while (actual) {
+            if (actual.alumno.calificacion < 7) { 
+                reprobados.agregar(actual.alumno); 
+            }
+            actual = actual.siguiente;
+        }
+        return reprobados; 
+    }
 }
 
 export default GestorAlumnos;

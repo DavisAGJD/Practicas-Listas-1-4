@@ -1,9 +1,9 @@
 :root {
     --text: #1c070b;
     --background: #fbf1f4;
-    --primary: #ce3e63;
-    --secondary: #e3c190;
-    --accent: #dacd6d;
+    --primary: #ce3e63; /* Cambia el color del fondo del formulario */
+    --secondary: #e3c190; /* Cambia el color de texto */
+    --accent: #dacd6d; /* Cambia el color de fondo de las listas */
 }
 
 body {
@@ -21,9 +21,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-h3 {
-    color: var(--secondary);
-    font-size: 1.5em;
+h2 {
+    color: var(--primary);
+    font-size: 1.8em;
     margin-bottom: 10px;
 }
 
@@ -79,12 +79,6 @@ button:hover {
 .number-list {
     margin: 0 20px;
     width: 300px;
-}
-
-h2 {
-    color: var(--primary);
-    font-size: 1.8em;
-    margin-bottom: 10px;
 }
 
 ul {

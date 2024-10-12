@@ -5,7 +5,6 @@ class ListaSimpleEnlazada {
         this.cabeza = null;
     }
 
-    // Método para agregar un nuevo nodo al final de la lista
     agregar(alumno) {
         const nuevoNodo = new Nodo(alumno);
         if (!this.cabeza) {
@@ -19,15 +18,14 @@ class ListaSimpleEnlazada {
         }
     }
 
-    // Método para recorrer la lista y devolver los alumnos
     obtenerAlumnos() {
         let actual = this.cabeza;
-        const alumnos = [];
+        let alumnosStr = '';
         while (actual) {
-            alumnos.push(actual.alumno);
+            alumnosStr += `${actual.alumno} `;
             actual = actual.siguiente;
         }
-        return alumnos;
+        return alumnosStr.trim();
     }
 }
 

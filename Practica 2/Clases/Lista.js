@@ -5,7 +5,6 @@ class ListaSimpleEnlazada {
     this.cabeza = null;
   }
 
-  // Método para añadir un nuevo nodo al final de la lista
   agregar(dato) {
     const nuevoNodo = new Nodo(dato);
     if (!this.cabeza) {
@@ -19,15 +18,14 @@ class ListaSimpleEnlazada {
     }
   }
 
-  // Método para obtener los datos en forma de lista
   obtenerDatos() {
     let actual = this.cabeza;
-    const resultados = [];
+    let resultadosStr = '';
     while (actual) {
-      resultados.push(actual.dato);
+      resultadosStr += `${actual.dato} `;
       actual = actual.siguiente;
     }
-    return resultados;
+    return resultadosStr.trim();
   }
 }
 

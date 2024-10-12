@@ -5,7 +5,6 @@ class ListaSimpleEnlazada {
         this.cabeza = null;
     }
 
-    // Método para agregar un nuevo nodo al final de la lista
     agregar(producto) {
         const nuevoNodo = new Nodo(producto);
         if (!this.cabeza) {
@@ -19,7 +18,6 @@ class ListaSimpleEnlazada {
         }
     }
 
-    // Método para eliminar un nodo por su clave (nombre del producto)
     eliminar(nombreProducto) {
         if (!this.cabeza) return;
 
@@ -38,15 +36,14 @@ class ListaSimpleEnlazada {
         }
     }
 
-    // Método para obtener los productos en forma de array
     obtenerProductos() {
         let actual = this.cabeza;
-        const productos = [];
+        let productosStr = ''; 
         while (actual) {
-            productos.push(actual.producto);
+            productosStr += `${actual.producto.nombre} - $${actual.producto.precio} \n`; 
             actual = actual.siguiente;
         }
-        return productos;
+        return productosStr.trim(); 
     }
 }
 
